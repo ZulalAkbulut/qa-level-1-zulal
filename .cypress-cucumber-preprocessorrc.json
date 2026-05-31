@@ -1,0 +1,5 @@
+{
+  "stepDefinitions": [
+    "e2e/**/*.{js,ts}"
+  ]
+}

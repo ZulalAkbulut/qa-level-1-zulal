@@ -31,6 +31,10 @@ class BankTransferPage {
     return cy.get('[data-testid="success-alert"]');
   }
 
+  get transferDateInput() {
+    return cy.get('[data-testid="transfer-date-input"]');
+  }
+
   navigateToForm() {
     this.navTransferLink.click();
   }
@@ -59,6 +63,26 @@ class BankTransferPage {
 
   verifySuccess(message) {
     this.successAlert.should("be.visible").and("contain.text", message);
+  }
+
+  enterDynamicDate(dateKeyword) {
+    const date = new Date();
+
+    if (dateKeyword === "tomorrow") {
+      date.setDate(date.getDate() + 1);
+    } else if (dateKeyword === "yesterday") {
+      date.setDate(date.getDate() + 1);
+    } else if (typeof dateKeyword === "number") {
+      let daysToAdd = Math.max(1, Math.min(dateKeyword, 90));
+      date.setDate(date.getDate() + daysToAdd);
+    }
+
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    const formattedDate = `${year}-${month}-${day}`;
+
+    this.transferDateInput.clear().type(formattedDate);
   }
 }
 

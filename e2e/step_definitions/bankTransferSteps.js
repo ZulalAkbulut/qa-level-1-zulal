@@ -23,3 +23,7 @@ When("click the submit transfer button", () => {
 Then("a success {string} should be displayed", (transferMessage) => {
   BankTransferPage.verifySuccess(transferMessage);
 });
+
+When("enter the dynamic transfer date for {string}", (dateKeyword) => {
+  BankTransferPage.enterDynamicDate(dateKeyword);
+});

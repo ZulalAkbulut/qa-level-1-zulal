@@ -27,3 +27,11 @@ Then("a success {string} should be displayed", (transferMessage) => {
 When("enter the dynamic transfer date for {string}", (dateKeyword) => {
   BankTransferPage.enterDynamicDate(dateKeyword);
 });
+
+Then("a validation error message {string} should be displayed", (errorMessage) => {
+  BankTransferPage.verifySuccess(errorMessage);
+});
+
+Then("the bank transfer navigation should not be visible in the UI", () => {
+  BankTransferPage.navTransferLink.should("not.exist");
+});

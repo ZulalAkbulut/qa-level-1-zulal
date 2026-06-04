@@ -35,6 +35,10 @@ class BankTransferPage {
     return cy.get('[data-testid="transfer-date-input"]');
   }
 
+  get errorAlert() {
+    return cy.get('[data-testid="error-alert"]');
+  }
+
   navigateToForm() {
     this.navTransferLink.click();
   }
@@ -83,6 +87,10 @@ class BankTransferPage {
     const formattedDate = `${year}-${month}-${day}`;
 
     this.transferDateInput.clear().type(formattedDate);
+  }
+
+  verifySubmitButtonIsHidden() {
+    this.submitButton.should("not.exist");
   }
 }
 

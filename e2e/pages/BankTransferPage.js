@@ -79,7 +79,7 @@ class BankTransferPage {
     if (dateKeyword === "tomorrow") {
       date.setDate(date.getDate() + 1);
     } else if (dateKeyword === "yesterday") {
-      date.setDate(date.getDate() + 1);
+      date.setDate(date.getDate() -1);
     } else if (typeof dateKeyword === "number") {
       let daysToAdd = Math.max(1, Math.min(dateKeyword, 90));
       date.setDate(date.getDate() + daysToAdd);

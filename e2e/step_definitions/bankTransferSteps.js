@@ -17,7 +17,11 @@ When("select the {string} transfer mode", (mode) => {
 });
 
 When("click the submit transfer button", () => {
+  cy.intercept("POST", "**/api/transfers").as("createTransfer");
   BankTransferPage.submit();
+  cy.wait("@createTransfer")
+    .its("response.statusCode")
+    .should("eq", 201);
 });
 
 Then("a success {string} should be displayed", (transferMessage) => {

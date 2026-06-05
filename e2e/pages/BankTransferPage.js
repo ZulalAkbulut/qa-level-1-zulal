@@ -69,6 +69,10 @@ class BankTransferPage {
     this.successAlert.should("be.visible").and("contain.text", message);
   }
 
+  verifyError(message) {
+    this.errorAlert.should("be.visible").and("contain.text", message);
+  }
+
   enterDynamicDate(dateKeyword) {
     const date = new Date();
 
@@ -94,4 +98,4 @@ class BankTransferPage {
   }
 }
 
-export default BankTransferPage;
+export default new BankTransferPage();

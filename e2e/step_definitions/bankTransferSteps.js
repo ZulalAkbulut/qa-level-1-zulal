@@ -29,7 +29,7 @@ When("enter the dynamic transfer date for {string}", (dateKeyword) => {
 });
 
 Then("a validation error message {string} should be displayed", (errorMessage) => {
-  BankTransferPage.verifySuccess(errorMessage);
+  BankTransferPage.verifyError(errorMessage);
 });
 
 Then("the bank transfer navigation should not be visible in the UI", () => {
